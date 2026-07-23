@@ -685,15 +685,11 @@ main > section:not(.hero):not(#waitlist),
    * 3. Click Deploy > New deployment > Web app.
    *      - Execute as: Me
    *      - Who has access: Anyone
-   * 4. Copy the deployment URL and paste it below as SHEET_ENDPOINT.
-   *
-   * Until SHEET_ENDPOINT is configured, submissions are safely stored in the
-   * browser's localStorage (key "langfordWaitlist") so nothing is lost —
-   * open the browser console and run `localStorage.getItem('langfordWaitlist')`
-   * to see queued entries, or export them once the endpoint is live.
+   * 4. Add the deployment URL to Vercel as the SPREADSHEET_ENDPOINT
+   *    environment variable. The server-side /api/waitlist route forwards
+   *    validated submissions without exposing that URL in this page.
    */
-  var SHEET_ENDPOINT = ''; // <-- paste your Google Apps Script Web App URL here
-
+  var SHEET_ENDPOINT = '/api/waitlist';
   var form = document.getElementById('waitlist-form');
   if (form) {
     var statusBox = document.getElementById('form-status');
@@ -707,14 +703,6 @@ main > section:not(.hero):not(#waitlist),
 
     function validEmail(value) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value); }
     function validPhone(value) { return value.replace(/\D/g, '').length >= 10; }
-
-    function queueLocally(entry) {
-      try {
-        var existing = JSON.parse(localStorage.getItem('langfordWaitlist') || '[]');
-        existing.push(entry);
-        localStorage.setItem('langfordWaitlist', JSON.stringify(existing));
-      } catch (err) { /* localStorage unavailable — ignore */ }
-    }
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -744,35 +732,25 @@ main > section:not(.hero):not(#waitlist),
         name: name.value.trim(),
         email: email.value.trim(),
         phone: phone.value.trim(),
+        website: website ? website.value : '',
         submittedAt: new Date().toISOString()
       };
 
       submitBtn.disabled = true;
       submitBtn.textContent = 'Submitting\u2026';
 
-      queueLocally(entry);
-
-      if (!SHEET_ENDPOINT) {
-        // No spreadsheet endpoint configured yet — entry is safely queued locally.
-        form.reset();
-        setStatus('You\u2019re on the list. (Spreadsheet connection not yet configured \u2014 see code comments.)', 'success');
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Join the VIP Waitlist';
-        return;
-      }
-
       fetch(SHEET_ENDPOINT, {
         method: 'POST',
-        mode: 'no-cors', // Apps Script doesn't return CORS headers; response is opaque
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(entry)
       })
-        .then(function () {
+        .then(function (response) {
+          if (!response.ok) throw new Error('Submission failed');
           form.reset();
           setStatus('You\u2019re on the list. Look out for an email from our leasing team.', 'success');
         })
         .catch(function () {
-          setStatus('We couldn\u2019t reach our server, but your details are saved locally \u2014 please also email leasing@thelangford.example.', 'error');
+          setStatus('We couldn\u2019t save your details. Please try again in a moment.', 'error');
         })
         .finally(function () {
           submitBtn.disabled = false;
