@@ -9,8 +9,8 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Langford | Waterfront Apartments in Newport News, VA">
 <meta property="og:description" content="A new waterfront apartment tower in Newport News, VA. Join the VIP waitlist for first access.">
-<meta property="og:image" content="https://www.thelangfordnn.example/assets/img/render-exterior-day.jpg">
-<link rel="icon" href="assets/img/logo.png">
+<meta property="og:image" content="assets/hero.jpg">
+<link rel="icon" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <script type="application/ld+json">
@@ -286,12 +286,24 @@ p { color: var(--ink-soft); }
 .waitlist-card {
   background: var(--paper); border-radius: var(--radius);
   box-shadow: var(--shadow-lift); padding: clamp(28px, 4vw, 48px);
+  color: var(--ink);
 }
+.section-navy .waitlist-card h3 { color: var(--navy-900); }
+.section-navy .waitlist-card p { color: var(--ink-soft); }
 .form-field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
 .form-field label { font-size: 0.76rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--navy-800); }
 .form-field input {
   padding: 14px 16px; border: 1px solid var(--line); background: var(--off-white);
-  border-radius: var(--radius-sm); font-size: 1rem; transition: border-color 0.2s var(--ease);
+  border-radius: var(--radius-sm); color: var(--navy-900); caret-color: var(--navy-900);
+  font-size: 1rem; transition: border-color 0.2s var(--ease);
+}
+.form-field input::placeholder { color: #66747c; opacity: 1; }
+.form-field input::-webkit-calendar-picker-indicator { opacity: .8; }
+.form-field input:-webkit-autofill,
+.form-field input:-webkit-autofill:hover,
+.form-field input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--navy-900);
+  box-shadow: 0 0 0 1000px var(--off-white) inset;
 }
 .form-field input:focus { border-color: var(--gold-500); }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
@@ -299,7 +311,7 @@ p { color: var(--ink-soft); }
 
 .form-status {
   margin-top: 16px; padding: 14px 18px; border-left: 3px solid var(--teal-500);
-  background: var(--off-white); font-size: 0.9rem; display: none;
+  background: var(--off-white); color: var(--navy-900); font-size: 0.9rem; display: none;
 }
 .form-status.is-visible { display: block; }
 .form-status.is-error { border-color: #B4432D; }
@@ -329,7 +341,7 @@ p { color: var(--ink-soft); }
 <header class="site-header" id="site-header">
   <div class="container header-inner">
     <a href="#main" class="brand">
-      <img src="assets/img/logo.png" alt="The Langford logo" width="44" height="44">
+      <img src="assets/logo.png" alt="The Langford logo" width="44" height="44">
       <span class="brand-text"><span class="brand-the">The</span><span class="brand-name">Langford</span></span>
     </a>
     <nav class="main-nav" aria-label="Primary">
@@ -346,10 +358,10 @@ p { color: var(--ink-soft); }
   <!-- Hero -->
   <section class="hero">
     <div class="hero-media">
-      <img src="assets/img/render-exterior-day.jpg" alt="Rendering of The Langford apartment tower exterior" fetchpriority="high">
+      <img src="assets/hero.jpg" alt="Rendering of The Langford apartment tower exterior" fetchpriority="high">
     </div>
     <div class="container hero-inner">
-      <div class="hero-badge"><img src="assets/img/logo-white.png" alt=""></div>
+      <div class="hero-badge"><img src="assets/logo.png" alt=""></div>
       <h1>Modern Coastal Living, Right on the James River</h1>
       <p class="lede">A new waterfront apartment tower coming to Newport News, VA — steps from the water, minutes from the shipyard. Be first to know when leasing opens.</p>
       <div class="hero-actions">
@@ -368,7 +380,7 @@ p { color: var(--ink-soft); }
   <section class="section section-off" id="about">
     <div class="container grid-2">
       <div class="about-media reveal">
-        <img src="assets/img/render-brand-collage.jpg" alt="The Langford building rendering with brand mark" loading="lazy">
+        <img src="assets/hero.jpg" alt="The Langford building rendering with brand mark" loading="lazy">
       </div>
       <div class="reveal">
         <span class="script-accent">Welcome home</span>
@@ -435,11 +447,11 @@ p { color: var(--ink-soft); }
         <h2>A First Look at The Langford</h2>
       </div>
       <div class="gallery-grid">
-        <div class="gallery-item wide"><img src="assets/img/render-exterior-day.jpg" alt="Exterior rendering of The Langford by day" loading="lazy"><span class="gi-label">Exterior &mdash; Daytime</span></div>
-        <div class="gallery-item"><img src="assets/img/render-exterior-night.jpg" alt="Exterior rendering of The Langford illuminated at night" loading="lazy"><span class="gi-label">Exterior &mdash; Evening</span></div>
-        <div class="gallery-item"><img src="assets/img/render-aerial-waterfront.jpg" alt="Aerial rendering of The Langford on the waterfront near Newport News Shipbuilding" loading="lazy"><span class="gi-label">Waterfront &amp; Shipyard</span></div>
-        <div class="gallery-item"><img src="assets/img/render-interior-livingroom.jpg" alt="Interior rendering of a Langford living room and kitchen" loading="lazy"><span class="gi-label">Interior &mdash; Living Area</span></div>
-        <div class="gallery-item"><img src="assets/img/render-floorplan-2br.jpg" alt="Two bedroom floor plan rendering at The Langford" loading="lazy"><span class="gi-label">Two Bedroom Floor Plan</span></div>
+        <div class="gallery-item wide"><img src="assets/hero.jpg" alt="Exterior rendering of The Langford by day" loading="lazy"><span class="gi-label">Exterior &mdash; Daytime</span></div>
+        <div class="gallery-item"><img src="assets/night.jpg" alt="Exterior rendering of The Langford illuminated at night" loading="lazy"><span class="gi-label">Exterior &mdash; Evening</span></div>
+        <div class="gallery-item"><img src="assets/aerial.jpg" alt="Aerial rendering of The Langford on the waterfront near Newport News Shipbuilding" loading="lazy"><span class="gi-label">Waterfront &amp; Shipyard</span></div>
+        <div class="gallery-item"><img src="assets/interior.jpg" alt="Interior rendering of a Langford living room and kitchen" loading="lazy"><span class="gi-label">Interior &mdash; Living Area</span></div>
+        <div class="gallery-item"><img src="assets/interior.jpg" alt="Two bedroom floor plan rendering at The Langford" loading="lazy"><span class="gi-label">Two Bedroom Floor Plan</span></div>
       </div>
       <p style="margin-top:22px; font-size:0.85rem; color:var(--ink-soft);">Renderings courtesy of Archsmith Studio, LBD Investments, and J.D. Lewis Construction Management, Inc. Final architecture and finishes are subject to change.</p>
     </div>
@@ -507,7 +519,7 @@ p { color: var(--ink-soft); }
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="assets/img/logo-white.png" alt="The Langford logo">
+        <img src="assets/logo.png" alt="The Langford logo">
         <span class="brand-text"><span class="brand-the" style="color:var(--teal-300);">The</span><span class="brand-name" style="color:#F8F4EA;">Langford</span></span>
       </div>
       <div class="footer-address">
