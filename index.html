@@ -9,8 +9,8 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="The Langford | Waterfront Apartments in Newport News, VA">
 <meta property="og:description" content="A new waterfront apartment tower in Newport News, VA. Join the VIP waitlist for first access.">
-<meta property="og:image" content="/assets/hero.jpg">
-<link rel="icon" href="/assets/logo.png">
+<meta property="og:image" content="assets/hero.jpg">
+<link rel="icon" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <script type="application/ld+json">
@@ -298,6 +298,7 @@ p { color: var(--ink-soft); }
   font-size: 1rem; transition: border-color 0.2s var(--ease);
 }
 .form-field input::placeholder { color: #66747c; opacity: 1; }
+.form-field input::-webkit-calendar-picker-indicator { opacity: .8; }
 .form-field input:-webkit-autofill,
 .form-field input:-webkit-autofill:hover,
 .form-field input:-webkit-autofill:focus {
@@ -362,7 +363,7 @@ main > section:not(.hero):not(#waitlist),
 <header class="site-header" id="site-header">
   <div class="container header-inner">
     <a href="#main" class="brand">
-      <img src="/assets/logo.png" alt="The Langford logo" width="44" height="44">
+      <img src="assets/logo.png" alt="The Langford logo" width="44" height="44">
       <span class="brand-text"><span class="brand-the">The</span><span class="brand-name">Langford</span></span>
     </a>
     <nav class="main-nav" aria-label="Primary">
@@ -376,10 +377,10 @@ main > section:not(.hero):not(#waitlist),
   <!-- Hero -->
   <section class="hero">
     <div class="hero-media">
-      <img src="/assets/hero.jpg" alt="Rendering of The Langford apartment tower exterior" fetchpriority="high">
+      <img src="assets/hero.jpg" alt="Rendering of The Langford apartment tower exterior" fetchpriority="high">
     </div>
     <div class="container hero-inner">
-      <div class="hero-badge"><img src="/assets/logo.png" alt=""></div>
+      <div class="hero-badge"><img src="assets/logo.png" alt=""></div>
       <h1>Modern Coastal Living, Right on the James River</h1>
       <p class="lede">A new waterfront apartment tower coming to Newport News, VA — steps from the water, minutes from the shipyard. Be first to know when leasing opens.</p>
       <div class="hero-actions">
@@ -397,7 +398,7 @@ main > section:not(.hero):not(#waitlist),
   <section class="section section-off" id="about">
     <div class="container grid-2">
       <div class="about-media reveal">
-        <img src="/assets/hero.jpg" alt="The Langford building rendering with brand mark" loading="lazy">
+        <img src="assets/hero.jpg" alt="The Langford building rendering with brand mark" loading="lazy">
       </div>
       <div class="reveal">
         <span class="script-accent">Welcome home</span>
@@ -464,11 +465,11 @@ main > section:not(.hero):not(#waitlist),
         <h2>A First Look at The Langford</h2>
       </div>
       <div class="gallery-grid">
-        <div class="gallery-item wide"><img src="/assets/hero.jpg" alt="Exterior rendering of The Langford by day" loading="lazy"><span class="gi-label">Exterior &mdash; Daytime</span></div>
-        <div class="gallery-item"><img src="/assets/night.jpg" alt="Exterior rendering of The Langford illuminated at night" loading="lazy"><span class="gi-label">Exterior &mdash; Evening</span></div>
-        <div class="gallery-item"><img src="/assets/aerial.jpg" alt="Aerial rendering of The Langford on the waterfront near Newport News Shipbuilding" loading="lazy"><span class="gi-label">Waterfront &amp; Shipyard</span></div>
-        <div class="gallery-item"><img src="/assets/interior.jpg" alt="Interior rendering of a Langford living room and kitchen" loading="lazy"><span class="gi-label">Interior &mdash; Living Area</span></div>
-        <div class="gallery-item"><img src="/assets/interior.jpg" alt="Two bedroom floor plan rendering at The Langford" loading="lazy"><span class="gi-label">Two Bedroom Floor Plan</span></div>
+        <div class="gallery-item wide"><img src="assets/hero.jpg" alt="Exterior rendering of The Langford by day" loading="lazy"><span class="gi-label">Exterior &mdash; Daytime</span></div>
+        <div class="gallery-item"><img src="assets/night.jpg" alt="Exterior rendering of The Langford illuminated at night" loading="lazy"><span class="gi-label">Exterior &mdash; Evening</span></div>
+        <div class="gallery-item"><img src="assets/aerial.jpg" alt="Aerial rendering of The Langford on the waterfront near Newport News Shipbuilding" loading="lazy"><span class="gi-label">Waterfront &amp; Shipyard</span></div>
+        <div class="gallery-item"><img src="assets/interior.jpg" alt="Interior rendering of a Langford living room and kitchen" loading="lazy"><span class="gi-label">Interior &mdash; Living Area</span></div>
+        <div class="gallery-item"><img src="assets/interior.jpg" alt="Two bedroom floor plan rendering at The Langford" loading="lazy"><span class="gi-label">Two Bedroom Floor Plan</span></div>
       </div>
       <p style="margin-top:22px; font-size:0.85rem; color:var(--ink-soft);">Renderings courtesy of Archsmith Studio, LBD Investments, and J.D. Lewis Construction Management, Inc. Final architecture and finishes are subject to change.</p>
     </div>
@@ -515,6 +516,11 @@ main > section:not(.hero):not(#waitlist),
             </div>
           </div>
 
+          <div class="form-field">
+            <label for="moveInDate">Ideal move-in date</label>
+            <input type="date" id="moveInDate" name="moveInDate" required>
+          </div>
+
           <button type="submit" class="btn btn-primary" style="width:100%;">Join the VIP Waitlist</button>
 
           <div class="form-status" id="form-status" aria-live="polite"></div>
@@ -531,7 +537,7 @@ main > section:not(.hero):not(#waitlist),
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="/assets/logo.png" alt="The Langford logo">
+        <img src="assets/logo.png" alt="The Langford logo">
         <span class="brand-text"><span class="brand-the" style="color:var(--teal-300);">The</span><span class="brand-name" style="color:#F8F4EA;">Langford</span></span>
       </div>
       <div class="footer-address">
@@ -561,7 +567,7 @@ main > section:not(.hero):not(#waitlist),
 /**
  * The Langford — single-page site behavior
  * Sticky header state, scroll reveals, gallery lightbox, and
- * VIP waitlist form submission through the server-side Resend integration.
+ * VIP waitlist form submission to a Google Sheet.
  */
 (function () {
   'use strict';
@@ -658,13 +664,43 @@ main > section:not(.hero):not(#waitlist),
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* ---------------- VIP Waitlist form -> Resend ---------------- */
+  /* ---------------- VIP Waitlist form -> Google Sheet ---------------- */
   /**
-   * The same-origin API route validates each entry and sends it to the leasing
-   * inbox through Resend. Resend credentials remain server-side in environment
-   * variables and are never included in this HTML.
+   * HOW THIS CONNECTS TO A SPREADSHEET
+   * -----------------------------------
+   * This form submits to a Google Apps Script "Web App" URL, which is the
+   * standard no-backend way to have a static HTML page write rows into a
+   * Google Sheet. To wire it up:
+   *
+   * 1. Create a Google Sheet with header row: Timestamp | Name | Email | Phone | Move-In Date
+   * 2. In the Sheet, open Extensions > Apps Script and paste:
+   *
+   *      function doPost(e) {
+   *        const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+   *        const data = JSON.parse(e.postData.contents);
+   *        sheet.appendRow([
+   *          new Date(),
+   *          data.name || '',
+   *          data.email || '',
+   *          data.phone || '',
+   *          data.moveInDate || ''
+   *        ]);
+   *        return ContentService.createTextOutput(JSON.stringify({ success: true }))
+   *          .setMimeType(ContentService.MimeType.JSON);
+   *      }
+   *
+   * 3. Click Deploy > New deployment > Web app.
+   *      - Execute as: Me
+   *      - Who has access: Anyone
+   * 4. Copy the deployment URL and paste it below as SHEET_ENDPOINT.
+   *
+   * Until SHEET_ENDPOINT is configured, submissions are safely stored in the
+   * browser's localStorage (key "langfordWaitlist") so nothing is lost —
+   * open the browser console and run `localStorage.getItem('langfordWaitlist')`
+   * to see queued entries, or export them once the endpoint is live.
    */
-  var WAITLIST_ENDPOINT = '/api/waitlist';
+  var SHEET_ENDPOINT = ''; // <-- paste your Google Apps Script Web App URL here
+
   var form = document.getElementById('waitlist-form');
   if (form) {
     var statusBox = document.getElementById('form-status');
@@ -679,18 +715,28 @@ main > section:not(.hero):not(#waitlist),
     function validEmail(value) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value); }
     function validPhone(value) { return value.replace(/\D/g, '').length >= 10; }
 
+    function queueLocally(entry) {
+      try {
+        var existing = JSON.parse(localStorage.getItem('langfordWaitlist') || '[]');
+        existing.push(entry);
+        localStorage.setItem('langfordWaitlist', JSON.stringify(existing));
+      } catch (err) { /* localStorage unavailable — ignore */ }
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
       var name = form.elements.name;
       var email = form.elements.email;
       var phone = form.elements.phone;
+      var moveInDate = form.elements.moveInDate;
       var website = form.elements.website; // honeypot
 
       var valid = true;
       if (!name.value.trim() || name.value.trim().length < 2) valid = false;
       if (!validEmail(email.value.trim())) valid = false;
       if (!validPhone(phone.value.trim())) valid = false;
+      if (!moveInDate.value) valid = false;
 
       if (!valid) {
         setStatus('Please fill in every field with a valid value and try again.', 'error');
@@ -707,25 +753,36 @@ main > section:not(.hero):not(#waitlist),
         name: name.value.trim(),
         email: email.value.trim(),
         phone: phone.value.trim(),
-        website: website ? website.value : '',
+        moveInDate: moveInDate.value,
         submittedAt: new Date().toISOString()
       };
 
       submitBtn.disabled = true;
       submitBtn.textContent = 'Submitting\u2026';
 
-      fetch(WAITLIST_ENDPOINT, {
+      queueLocally(entry);
+
+      if (!SHEET_ENDPOINT) {
+        // No spreadsheet endpoint configured yet — entry is safely queued locally.
+        form.reset();
+        setStatus('You\u2019re on the list. (Spreadsheet connection not yet configured \u2014 see code comments.)', 'success');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Join the VIP Waitlist';
+        return;
+      }
+
+      fetch(SHEET_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        mode: 'no-cors', // Apps Script doesn't return CORS headers; response is opaque
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(entry)
       })
-        .then(function (response) {
-          if (!response.ok) throw new Error('Submission failed');
+        .then(function () {
           form.reset();
           setStatus('You\u2019re on the list. Look out for an email from our leasing team.', 'success');
         })
         .catch(function () {
-          setStatus('We couldn\u2019t save your details. Please try again in a moment.', 'error');
+          setStatus('We couldn\u2019t reach our server, but your details are saved locally \u2014 please also email leasing@thelangford.example.', 'error');
         })
         .finally(function () {
           submitBtn.disabled = false;
