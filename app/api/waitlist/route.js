@@ -35,32 +35,46 @@ export async function POST(request) {
     return json({ error: "Please provide a valid name, email, and phone number." }, 400);
   }
 
-  const endpoint = process.env.SPREADSHEET_ENDPOINT;
-  if (!endpoint) {
-    console.error("SPREADSHEET_ENDPOINT is not configured.");
+  const apiKey = process.env.RESEND_API_KEY;
+  const fromEmail = process.env.RESEND_FROM_EMAIL;
+  const recipientEmail = process.env.WAITLIST_RECIPIENT_EMAIL;
+
+  if (!apiKey || !fromEmail || !recipientEmail) {
+    console.error("Resend environment variables are not fully configured.");
     return json({ error: "The waitlist is temporarily unavailable." }, 503);
   }
 
   try {
-    const spreadsheetResponse = await fetch(endpoint, {
+    const resendResponse = await fetch("https://api.resend.com/emails", {
       method: "POST",
-      headers: { "content-type": "text/plain;charset=utf-8" },
+      headers: {
+        authorization: `Bearer ${apiKey}`,
+        "content-type": "application/json"
+      },
       body: JSON.stringify({
-        name,
-        email,
-        phone,
-        submittedAt: new Date().toISOString()
-      }),
-      redirect: "follow"
+        from: fromEmail,
+        to: [recipientEmail],
+        reply_to: email,
+        subject: "New Langford VIP waitlist signup",
+        text: [
+          "A new visitor joined The Langford VIP waitlist.",
+          "",
+          `Name: ${name}`,
+          `Email: ${email}`,
+          `Phone: ${phone}`,
+          `Submitted: ${new Date().toISOString()}`
+        ].join("\n")
+      })
     });
 
-    if (!spreadsheetResponse.ok) {
-      throw new Error(`Spreadsheet returned ${spreadsheetResponse.status}.`);
+    if (!resendResponse.ok) {
+      const details = await resendResponse.text();
+      throw new Error(`Resend returned ${resendResponse.status}: ${details}`);
     }
 
     return json({ success: true });
   } catch (error) {
-    console.error("Spreadsheet submission failed:", error);
-    return json({ error: "We could not save your details. Please try again." }, 502);
+    console.error("Resend submission failed:", error);
+    return json({ error: "We could not send your details. Please try again." }, 502);
   }
 }

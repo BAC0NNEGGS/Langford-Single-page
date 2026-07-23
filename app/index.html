@@ -561,7 +561,7 @@ main > section:not(.hero):not(#waitlist),
 /**
  * The Langford — single-page site behavior
  * Sticky header state, scroll reveals, gallery lightbox, and
- * VIP waitlist form submission to a Google Sheet.
+ * VIP waitlist form submission through the server-side Resend integration.
  */
 (function () {
   'use strict';
@@ -658,38 +658,13 @@ main > section:not(.hero):not(#waitlist),
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* ---------------- VIP Waitlist form -> Google Sheet ---------------- */
+  /* ---------------- VIP Waitlist form -> Resend ---------------- */
   /**
-   * HOW THIS CONNECTS TO A SPREADSHEET
-   * -----------------------------------
-   * This form submits to a Google Apps Script "Web App" URL, which is the
-   * standard no-backend way to have a static HTML page write rows into a
-   * Google Sheet. To wire it up:
-   *
-   * 1. Create a Google Sheet with header row: Timestamp | Name | Email | Phone
-   * 2. In the Sheet, open Extensions > Apps Script and paste:
-   *
-   *      function doPost(e) {
-   *        const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-   *        const data = JSON.parse(e.postData.contents);
-   *        sheet.appendRow([
-   *          new Date(),
-   *          data.name || '',
-   *          data.email || '',
-   *          data.phone || ''
-   *        ]);
-   *        return ContentService.createTextOutput(JSON.stringify({ success: true }))
-   *          .setMimeType(ContentService.MimeType.JSON);
-   *      }
-   *
-   * 3. Click Deploy > New deployment > Web app.
-   *      - Execute as: Me
-   *      - Who has access: Anyone
-   * 4. Add the deployment URL to Vercel as the SPREADSHEET_ENDPOINT
-   *    environment variable. The server-side /api/waitlist route forwards
-   *    validated submissions without exposing that URL in this page.
+   * The same-origin API route validates each entry and sends it to the leasing
+   * inbox through Resend. Resend credentials remain server-side in environment
+   * variables and are never included in this HTML.
    */
-  var SHEET_ENDPOINT = '/api/waitlist';
+  var WAITLIST_ENDPOINT = '/api/waitlist';
   var form = document.getElementById('waitlist-form');
   if (form) {
     var statusBox = document.getElementById('form-status');
@@ -739,7 +714,7 @@ main > section:not(.hero):not(#waitlist),
       submitBtn.disabled = true;
       submitBtn.textContent = 'Submitting\u2026';
 
-      fetch(SHEET_ENDPOINT, {
+      fetch(WAITLIST_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(entry)
