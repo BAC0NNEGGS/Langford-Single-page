@@ -1,4 +1,4 @@
-import page from "../index.html?raw";
+import page from "../src/index.html?raw";
 
 export async function GET() {
   return new Response(page, {
