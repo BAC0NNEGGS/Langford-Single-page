@@ -330,6 +330,28 @@ p { color: var(--ink-soft); }
 .footer-address { font-size: 0.88rem; color: rgba(251,250,246,0.85); text-align: right; }
 .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding-top: 22px; font-size: 0.78rem; color: rgba(251,250,246,0.9); }
 
+/* ---------- Focused hero + form landing page ---------- */
+body { min-height: 100vh; }
+main > section:not(.hero):not(#waitlist),
+.site-footer { display: none !important; }
+#waitlist {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding-block: clamp(32px, 7vw, 80px);
+}
+#waitlist .container {
+  width: min(100% - 32px, 720px);
+  margin-inline: auto;
+}
+#waitlist .grid-2 { display: block; }
+#waitlist .grid-2 > .reveal:first-child { display: none; }
+#waitlist .waitlist-card {
+  width: 100%;
+  opacity: 1;
+  transform: none;
+}
+
 /* ---------- Reveal on scroll ---------- */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
@@ -345,9 +367,6 @@ p { color: var(--ink-soft); }
       <span class="brand-text"><span class="brand-the">The</span><span class="brand-name">Langford</span></span>
     </a>
     <nav class="main-nav" aria-label="Primary">
-      <a href="#about">About</a>
-      <a href="#amenities">Amenities</a>
-      <a href="#gallery">Gallery</a>
       <a href="#waitlist" class="nav-cta">Join VIP Waitlist</a>
     </nav>
   </div>
@@ -366,7 +385,6 @@ p { color: var(--ink-soft); }
       <p class="lede">A new waterfront apartment tower coming to Newport News, VA — steps from the water, minutes from the shipyard. Be first to know when leasing opens.</p>
       <div class="hero-actions">
         <a href="#waitlist" class="btn btn-primary">Join the VIP Waitlist</a>
-        <a href="#gallery" class="btn btn-outline">See the Renderings</a>
       </div>
       <div class="hero-meta">
         <div><span class="num">2800</span><span class="label">West Avenue</span></div>
