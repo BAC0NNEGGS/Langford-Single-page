@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Langford | Waterfront Apartments in Newport News, VA</title>
+<meta name="description" content="The Langford is a waterfront apartment tower coming to Newport News, VA. Pool, community room, fitness facility, trash concierge, and water views in most homes. Join the VIP waitlist.">
+<link rel="canonical" href="https://www.thelangfordnn.example/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Langford | Waterfront Apartments in Newport News, VA">
+<meta property="og:description" content="A new waterfront apartment tower in Newport News, VA. Join the VIP waitlist for first access.">
+<meta property="og:image" content="https://www.thelangfordnn.example/assets/img/render-exterior-day.jpg">
+<link rel="icon" href="assets/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ApartmentComplex",
+  "name": "The Langford",
+  "description": "Waterfront apartment tower in Newport News, Virginia.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "2800 West Avenue",
+    "addressLocality": "Newport News",
+    "addressRegion": "VA",
+    "postalCode": "23607",
+    "addressCountry": "US"
+  }
+}
+</script>
+<style>
+/* =========================================================
+   The Langford — single-page site
+   Tokens, reset, and typography
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --navy-900: #0A2A3D;
+  --navy-800: #0F3A54;
+  --teal-500: #4F93A3;
+  --teal-300: #9FC7CD;
+  --lime-500: #B7C51F;
+  --lime-600: #9CA818;
+  --gold-500: #C79A4B;
+  --gold-600: #A87E38;
+
+  --off-white: #F8F4EA;
+  --paper: #FCFAF3;
+  --ink: #1E2B33;
+  --ink-soft: #56636A;
+  --line: rgba(30, 43, 51, 0.12);
+  --line-light: rgba(251, 250, 246, 0.24);
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --container: 1200px;
+  --gutter: clamp(20px, 5vw, 64px);
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  --radius-sm: 6px;
+  --radius: 12px;
+  --shadow-soft: 0 12px 32px rgba(20, 34, 41, 0.08);
+  --shadow-card: 0 20px 48px rgba(10, 42, 61, 0.12);
+  --shadow-lift: 0 28px 64px rgba(10, 42, 61, 0.18);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+input, select, textarea { font: inherit; color: inherit; }
+h1, h2, h3, h4, p, figure { margin: 0; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--navy-900);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+h1 { font-size: clamp(2.4rem, 5.2vw, 4.6rem); font-weight: 400; }
+h2 { font-size: clamp(1.9rem, 3.2vw, 2.8rem); }
+h3 { font-size: clamp(1.25rem, 2vw, 1.6rem); }
+
+p { color: var(--ink-soft); }
+.lede { font-size: clamp(1.05rem, 1.5vw, 1.25rem); color: var(--ink-soft); max-width: 46ch; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold-600);
+}
+.eyebrow::before { content: ''; width: 28px; height: 1px; background: currentColor; display: inline-block; }
+
+:focus-visible { outline: 2px solid var(--lime-600); outline-offset: 3px; }
+::selection { background: var(--lime-500); color: var(--navy-900); }
+
+.container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
+
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+.skip-link {
+  position: absolute; left: -999px; top: 0;
+  background: var(--navy-900); color: var(--paper);
+  padding: 14px 22px; z-index: 1000; font-weight: 600;
+}
+.skip-link:focus { left: 16px; top: 16px; }
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 500;
+  background: rgba(251, 250, 246, 0.92);
+  backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid var(--line);
+  transition: box-shadow 0.3s var(--ease);
+}
+.site-header.is-scrolled { box-shadow: 0 8px 24px rgba(10, 42, 61, 0.06); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 14px; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand img { height: 44px; width: auto; }
+.brand-text { font-family: var(--font-display); color: var(--navy-900); line-height: 1.05; }
+.brand-text .brand-the { display: block; font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--teal-500); font-family: var(--font-body); font-weight: 600; }
+.brand-text .brand-name { display: block; font-size: 1.3rem; letter-spacing: 0.02em; }
+
+.main-nav { display: flex; align-items: center; gap: clamp(14px, 2vw, 30px); }
+.main-nav a { font-size: 0.85rem; font-weight: 500; color: var(--navy-800); }
+.main-nav a:hover { color: var(--gold-600); }
+.nav-cta {
+  background: var(--navy-900); color: var(--paper) !important;
+  padding: 11px 22px !important; border-radius: var(--radius-sm);
+  font-weight: 600 !important; letter-spacing: 0.03em;
+  transition: background 0.25s var(--ease), transform 0.2s var(--ease);
+}
+.nav-cta:hover { background: var(--lime-600); color: var(--navy-900) !important; transform: translateY(-1px); }
+
+@media (max-width: 640px) {
+  .main-nav a:not(.nav-cta) { display: none; }
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 15px 30px; font-size: 0.86rem; font-weight: 600; letter-spacing: 0.03em;
+  border-radius: var(--radius-sm);
+  transition: background 0.25s var(--ease), color 0.25s var(--ease), transform 0.2s var(--ease), box-shadow 0.25s var(--ease);
+  white-space: nowrap;
+}
+.btn-primary { background: var(--lime-500); color: var(--navy-900); box-shadow: 0 10px 24px rgba(183,197,31,0.28); }
+.btn-primary:hover { background: var(--lime-600); transform: translateY(-2px); box-shadow: 0 16px 32px rgba(183,197,31,0.34); }
+.btn-outline { border: 1px solid var(--line-light); color: inherit; }
+.btn-outline:hover { border-color: currentColor; background: rgba(255,255,255,0.06); }
+.btn-outline.on-light { border-color: var(--line); }
+.btn-outline.on-light:hover { background: var(--navy-900); color: var(--paper); border-color: var(--navy-900); }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; min-height: 92vh; display: flex; align-items: flex-end; color: var(--off-white); overflow: hidden; }
+.hero-media { position: absolute; inset: 0; z-index: -2; }
+.hero-media img { width: 100%; height: 100%; object-fit: cover; }
+.hero-media::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10,42,61,0.45) 0%, rgba(10,42,61,0.35) 40%, rgba(10,29,42,0.92) 100%);
+}
+.hero-inner { width: 100%; padding-block: 130px 70px; }
+.hero-badge { display: inline-flex; align-items: center; gap: 14px; margin-bottom: 26px; }
+.hero-badge img { height: 50px; }
+.hero h1 { color: var(--off-white); max-width: 16ch; }
+.hero .lede { color: rgba(251,250,246,0.9); margin-top: 20px; }
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 36px; }
+.hero-meta { margin-top: 52px; display: flex; gap: clamp(20px,5vw,48px); flex-wrap: wrap; border-top: 1px solid var(--line-light); padding-top: 24px; }
+.hero-meta div { min-width: 120px; }
+.hero-meta .num { font-family: var(--font-display); font-size: 1.5rem; display: block; }
+.hero-meta .label { font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(251,250,246,0.82); }
+
+/* ---------- Sections ---------- */
+.section { padding-block: clamp(56px, 8vw, 100px); }
+.section-off { background: var(--off-white); }
+.section-navy { background: var(--navy-900); color: var(--off-white); }
+.section-navy h2, .section-navy h3 { color: var(--off-white); }
+.section-navy p { color: rgba(251,250,246,0.85); }
+.section-head { margin-bottom: clamp(32px, 5vw, 56px); max-width: 640px; }
+.section-head h2 { margin-top: 12px; }
+
+.script-accent { font-family: var(--font-display); font-style: italic; font-weight: 400; color: var(--gold-600); font-size: 1.05rem; display: block; margin-bottom: 6px; }
+
+/* ---------- About / name origin ---------- */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 64px); align-items: center; }
+@media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+
+.about-media { position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-card); }
+.about-media img { width: 100%; height: 480px; object-fit: cover; }
+.name-quote {
+  border-left: 3px solid var(--gold-500);
+  padding-left: 20px;
+  margin-top: 24px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--navy-900);
+}
+
+/* ---------- Amenities ---------- */
+.amenity-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.amenity-tile { background: var(--paper); padding: 34px 22px; text-align: center; transition: background 0.2s var(--ease); }
+.amenity-tile:hover { background: var(--off-white); }
+.amenity-icon {
+  width: 52px; height: 52px; margin: 0 auto 16px;
+  border-radius: 50%;
+  background: var(--navy-900);
+  color: var(--lime-500);
+  display: flex; align-items: center; justify-content: center;
+}
+.amenity-icon svg { width: 24px; height: 24px; }
+.amenity-tile h4 { font-size: 0.98rem; color: var(--navy-900); }
+.amenity-tile p { font-size: 0.82rem; margin-top: 6px; }
+
+@media (max-width: 860px) { .amenity-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 560px) { .amenity-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ---------- Gallery ---------- */
+.gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.gallery-item { position: relative; overflow: hidden; border-radius: var(--radius-sm); cursor: pointer; aspect-ratio: 4/5; background: var(--navy-800); }
+.gallery-item.wide { grid-column: span 2; aspect-ratio: 8/5; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
+.gallery-item:hover img { transform: scale(1.06); }
+.gallery-item .gi-label {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 14px 16px;
+  background: linear-gradient(0deg, rgba(10,29,42,0.85), transparent);
+  color: var(--off-white); font-size: 0.8rem;
+  opacity: 0; transform: translateY(8px);
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.gallery-item:hover .gi-label { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 860px) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-item.wide { grid-column: span 2; }
+}
+
+.lightbox {
+  position: fixed; inset: 0; background: rgba(10,20,26,0.94);
+  display: none; align-items: center; justify-content: center; z-index: 900; padding: 40px;
+}
+.lightbox.is-open { display: flex; }
+.lightbox figure { max-width: 1100px; width: 100%; }
+.lightbox img { width: 100%; max-height: 78vh; object-fit: contain; border-radius: var(--radius-sm); }
+.lightbox figcaption { color: var(--off-white); margin-top: 16px; font-size: 0.9rem; text-align: center; }
+.lightbox-close { position: absolute; top: 28px; right: 28px; color: var(--off-white); font-size: 1rem; letter-spacing: 0.08em; display: flex; align-items: center; gap: 8px; }
+.lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); color: var(--off-white); font-size: 2rem; padding: 10px 16px; }
+.lightbox-prev { left: 16px; }
+.lightbox-next { right: 16px; }
+
+/* ---------- Waitlist form ---------- */
+.waitlist-card {
+  background: var(--paper); border-radius: var(--radius);
+  box-shadow: var(--shadow-lift); padding: clamp(28px, 4vw, 48px);
+}
+.form-field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+.form-field label { font-size: 0.76rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--navy-800); }
+.form-field input {
+  padding: 14px 16px; border: 1px solid var(--line); background: var(--off-white);
+  border-radius: var(--radius-sm); font-size: 1rem; transition: border-color 0.2s var(--ease);
+}
+.form-field input:focus { border-color: var(--gold-500); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 540px) { .form-row { grid-template-columns: 1fr; } }
+
+.form-status {
+  margin-top: 16px; padding: 14px 18px; border-left: 3px solid var(--teal-500);
+  background: var(--off-white); font-size: 0.9rem; display: none;
+}
+.form-status.is-visible { display: block; }
+.form-status.is-error { border-color: #B4432D; }
+.form-status.is-success { border-color: var(--lime-500); }
+.field-hint { font-size: 0.78rem; color: var(--ink-soft); }
+
+.waitlist-perks { display: flex; flex-direction: column; gap: 18px; margin-top: 28px; }
+.perk-row { display: flex; gap: 12px; align-items: flex-start; }
+.perk-row .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold-500); margin-top: 8px; flex-shrink: 0; }
+
+/* ---------- Footer ---------- */
+.site-footer { background: var(--navy-900); color: var(--off-white); padding-block: 56px 28px; }
+.footer-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; padding-bottom: 32px; border-bottom: 1px solid var(--line-light); }
+.footer-brand { display: flex; align-items: center; gap: 12px; }
+.footer-brand img { height: 38px; }
+.footer-address { font-size: 0.88rem; color: rgba(251,250,246,0.85); text-align: right; }
+.footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding-top: 22px; font-size: 0.78rem; color: rgba(251,250,246,0.9); }
+
+/* ---------- Reveal on scroll ---------- */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="site-header">
+  <div class="container header-inner">
+    <a href="#main" class="brand">
+      <img src="assets/img/logo.png" alt="The Langford logo" width="44" height="44">
+      <span class="brand-text"><span class="brand-the">The</span><span class="brand-name">Langford</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#amenities">Amenities</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#waitlist" class="nav-cta">Join VIP Waitlist</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-media">
+      <img src="assets/img/render-exterior-day.jpg" alt="Rendering of The Langford apartment tower exterior" fetchpriority="high">
+    </div>
+    <div class="container hero-inner">
+      <div class="hero-badge"><img src="assets/img/logo-white.png" alt=""></div>
+      <h1>Modern Coastal Living, Right on the James River</h1>
+      <p class="lede">A new waterfront apartment tower coming to Newport News, VA — steps from the water, minutes from the shipyard. Be first to know when leasing opens.</p>
+      <div class="hero-actions">
+        <a href="#waitlist" class="btn btn-primary">Join the VIP Waitlist</a>
+        <a href="#gallery" class="btn btn-outline">See the Renderings</a>
+      </div>
+      <div class="hero-meta">
+        <div><span class="num">2800</span><span class="label">West Avenue</span></div>
+        <div><span class="num">Studio&ndash;3BR</span><span class="label">Residence Types</span></div>
+        <div><span class="num">Waterfront</span><span class="label">James River Setting</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About / name origin -->
+  <section class="section section-off" id="about">
+    <div class="container grid-2">
+      <div class="about-media reveal">
+        <img src="assets/img/render-brand-collage.jpg" alt="The Langford building rendering with brand mark" loading="lazy">
+      </div>
+      <div class="reveal">
+        <span class="script-accent">Welcome home</span>
+        <span class="eyebrow">About The Langford</span>
+        <h2 style="margin-top:10px;">A Long-Standing Name, A New Waterfront Address</h2>
+        <p class="lede" style="margin-top:18px;">Rising on the James River at 28th Street and West Avenue, The Langford brings a new standard of waterfront living to Newport News.</p>
+        <p class="name-quote">"The name &lsquo;Langford&rsquo; is a topographical identifier of someone living near a long river crossing — literally translating to &lsquo;the long ford.&rsquo;"</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Amenities -->
+  <section class="section section-navy" id="amenities">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow" style="color:var(--teal-300);">Amenities</span>
+        <h2>Everything You Need, Close to Home</h2>
+      </div>
+      <div class="amenity-grid reveal">
+        <div class="amenity-tile">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 17c1.5 1 3 1 4.5 0s3-1 4.5 0 3 1 4.5 0 3-1 4.5 0"></path><path d="M2 21c1.5 1 3 1 4.5 0s3-1 4.5 0 3 1 4.5 0 3-1 4.5 0"></path><path d="M4 17V8a4 4 0 0 1 8 0"></path><path d="M12 17V8a2 2 0 0 1 4 0v9"></path></svg>
+          </div>
+          <h4>Pool</h4>
+          <p>Waterfront pool &amp; sundeck</p>
+        </div>
+        <div class="amenity-tile">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M5 21V9l7-5 7 5v12"></path><path d="M9 21v-6h6v6"></path></svg>
+          </div>
+          <h4>Community Room</h4>
+          <p>Lounge &amp; coworking space</p>
+        </div>
+        <div class="amenity-tile">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5 17.5 17.5"></path><path d="m21 21-1-1"></path><path d="m3 3 1 1"></path><path d="m18 22 4-4"></path><path d="m2 6 4-4"></path><path d="m3 10 7-7"></path><path d="m14 21 7-7"></path></svg>
+          </div>
+          <h4>Fitness Facility</h4>
+          <p>24-hour access</p>
+        </div>
+        <div class="amenity-tile">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path></svg>
+          </div>
+          <h4>Trash Concierge</h4>
+          <p>Doorstep valet pickup</p>
+        </div>
+        <div class="amenity-tile">
+          <div class="amenity-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          </div>
+          <h4>Water Views</h4>
+          <p>In most residences</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section section-off" id="gallery">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Renderings</span>
+        <h2>A First Look at The Langford</h2>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item wide"><img src="assets/img/render-exterior-day.jpg" alt="Exterior rendering of The Langford by day" loading="lazy"><span class="gi-label">Exterior &mdash; Daytime</span></div>
+        <div class="gallery-item"><img src="assets/img/render-exterior-night.jpg" alt="Exterior rendering of The Langford illuminated at night" loading="lazy"><span class="gi-label">Exterior &mdash; Evening</span></div>
+        <div class="gallery-item"><img src="assets/img/render-aerial-waterfront.jpg" alt="Aerial rendering of The Langford on the waterfront near Newport News Shipbuilding" loading="lazy"><span class="gi-label">Waterfront &amp; Shipyard</span></div>
+        <div class="gallery-item"><img src="assets/img/render-interior-livingroom.jpg" alt="Interior rendering of a Langford living room and kitchen" loading="lazy"><span class="gi-label">Interior &mdash; Living Area</span></div>
+        <div class="gallery-item"><img src="assets/img/render-floorplan-2br.jpg" alt="Two bedroom floor plan rendering at The Langford" loading="lazy"><span class="gi-label">Two Bedroom Floor Plan</span></div>
+      </div>
+      <p style="margin-top:22px; font-size:0.85rem; color:var(--ink-soft);">Renderings courtesy of Archsmith Studio, LBD Investments, and J.D. Lewis Construction Management, Inc. Final architecture and finishes are subject to change.</p>
+    </div>
+  </section>
+
+  <!-- VIP Waitlist -->
+  <section class="section section-navy" id="waitlist">
+    <div class="container grid-2">
+      <div class="reveal">
+        <span class="eyebrow" style="color:var(--teal-300);">Interest List</span>
+        <h2 style="margin-top:10px;">Join Our VIP Waitlist</h2>
+        <p class="lede" style="margin-top:16px; color:rgba(251,250,246,0.85);">Be the first to know about floor plans, pricing, and move-in dates before they're announced publicly.</p>
+        <div class="waitlist-perks">
+          <div class="perk-row"><span class="dot"></span><p style="color:rgba(251,250,246,0.85);">Early access to floor plans &amp; pricing</p></div>
+          <div class="perk-row"><span class="dot"></span><p style="color:rgba(251,250,246,0.85);">Priority scheduling for move-in dates</p></div>
+          <div class="perk-row"><span class="dot"></span><p style="color:rgba(251,250,246,0.85);">First look at leasing specials</p></div>
+        </div>
+      </div>
+
+      <div class="waitlist-card reveal">
+        <h3>Get VIP Access</h3>
+        <p style="margin-top:8px;">Leave your details below — no spam, ever.</p>
+
+        <form id="waitlist-form" novalidate style="margin-top:26px;">
+          <!-- Honeypot: hidden from real users, bots often fill it -->
+          <div class="visually-hidden" aria-hidden="true">
+            <label for="website">Leave this field blank</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="form-field">
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" autocomplete="name" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" required>
+            </div>
+            <div class="form-field">
+              <label for="phone">Phone number</label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" required>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="moveInDate">Ideal move-in date</label>
+            <input type="date" id="moveInDate" name="moveInDate" required>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;">Join the VIP Waitlist</button>
+
+          <div class="form-status" id="form-status" aria-live="polite"></div>
+
+          <p class="field-hint" style="margin-top:14px;">By submitting, you agree to be contacted by The Langford leasing team.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/img/logo-white.png" alt="The Langford logo">
+        <span class="brand-text"><span class="brand-the" style="color:var(--teal-300);">The</span><span class="brand-name" style="color:#F8F4EA;">Langford</span></span>
+      </div>
+      <div class="footer-address">
+        2800 West Avenue, Newport News, VA 23607<br>
+        <a href="mailto:leasing@thelangford.example" style="color:var(--teal-300);">leasing@thelangford.example</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> The Langford. All rights reserved.</p>
+      <p>Equal Housing Opportunity</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lightbox-close" type="button"><span aria-hidden="true">&times;</span> Close</button>
+  <button class="lightbox-nav lightbox-prev" type="button" aria-label="Previous image">&#8249;</button>
+  <figure>
+    <img src="" alt="">
+    <figcaption></figcaption>
+  </figure>
+  <button class="lightbox-nav lightbox-next" type="button" aria-label="Next image">&#8250;</button>
+</div>
+
+<script>
+/**
+ * The Langford — single-page site behavior
+ * Sticky header state, scroll reveals, gallery lightbox, and
+ * VIP waitlist form submission to a Google Sheet.
+ */
+(function () {
+  'use strict';
+
+  /* ---------------- Sticky header ---------------- */
+  var header = document.getElementById('site-header');
+  if (header) {
+    var onScroll = function () { header.classList.toggle('is-scrolled', window.scrollY > 12); };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  /* ---------------- Scroll reveal ---------------- */
+  var revealItems = document.querySelectorAll('.reveal');
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (revealItems.length) {
+    if (prefersReduced || !('IntersectionObserver' in window)) {
+      revealItems.forEach(function (el) { el.classList.add('is-visible'); });
+    } else {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+      revealItems.forEach(function (el) { observer.observe(el); });
+    }
+  }
+
+  /* ---------------- Gallery lightbox ---------------- */
+  var galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+  var lightbox = document.getElementById('lightbox');
+  if (galleryItems.length && lightbox) {
+    var lbImg = lightbox.querySelector('img');
+    var lbCaption = lightbox.querySelector('figcaption');
+    var closeBtn = lightbox.querySelector('.lightbox-close');
+    var prevBtn = lightbox.querySelector('.lightbox-prev');
+    var nextBtn = lightbox.querySelector('.lightbox-next');
+    var currentIndex = 0;
+    var lastFocused = null;
+
+    function render() {
+      var item = galleryItems[currentIndex];
+      var img = item.querySelector('img');
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbCaption.textContent = img.alt;
+    }
+    function openLightbox(index) {
+      currentIndex = index;
+      render();
+      lastFocused = document.activeElement;
+      lightbox.classList.add('is-open');
+      closeBtn.focus();
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('is-open');
+      document.body.style.overflow = '';
+      if (lastFocused) lastFocused.focus();
+    }
+
+    galleryItems.forEach(function (item, index) {
+      item.setAttribute('tabindex', '0');
+      item.setAttribute('role', 'button');
+      item.setAttribute('aria-label', 'View larger image: ' + item.querySelector('img').alt);
+      item.addEventListener('click', function () { openLightbox(index); });
+      item.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(index); }
+      });
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
+    prevBtn.addEventListener('click', function () {
+      currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+      render();
+    });
+    nextBtn.addEventListener('click', function () {
+      currentIndex = (currentIndex + 1) % galleryItems.length;
+      render();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (!lightbox.classList.contains('is-open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextBtn.click();
+      if (e.key === 'ArrowLeft') prevBtn.click();
+    });
+  }
+
+  /* ---------------- Footer year ---------------- */
+  var yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* ---------------- VIP Waitlist form -> Google Sheet ---------------- */
+  /**
+   * HOW THIS CONNECTS TO A SPREADSHEET
+   * -----------------------------------
+   * This form submits to a Google Apps Script "Web App" URL, which is the
+   * standard no-backend way to have a static HTML page write rows into a
+   * Google Sheet. To wire it up:
+   *
+   * 1. Create a Google Sheet with header row: Timestamp | Name | Email | Phone | Move-In Date
+   * 2. In the Sheet, open Extensions > Apps Script and paste:
+   *
+   *      function doPost(e) {
+   *        const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+   *        const data = JSON.parse(e.postData.contents);
+   *        sheet.appendRow([
+   *          new Date(),
+   *          data.name || '',
+   *          data.email || '',
+   *          data.phone || '',
+   *          data.moveInDate || ''
+   *        ]);
+   *        return ContentService.createTextOutput(JSON.stringify({ success: true }))
+   *          .setMimeType(ContentService.MimeType.JSON);
+   *      }
+   *
+   * 3. Click Deploy > New deployment > Web app.
+   *      - Execute as: Me
+   *      - Who has access: Anyone
+   * 4. Copy the deployment URL and paste it below as SHEET_ENDPOINT.
+   *
+   * Until SHEET_ENDPOINT is configured, submissions are safely stored in the
+   * browser's localStorage (key "langfordWaitlist") so nothing is lost —
+   * open the browser console and run `localStorage.getItem('langfordWaitlist')`
+   * to see queued entries, or export them once the endpoint is live.
+   */
+  var SHEET_ENDPOINT = ''; // <-- paste your Google Apps Script Web App URL here
+
+  var form = document.getElementById('waitlist-form');
+  if (form) {
+    var statusBox = document.getElementById('form-status');
+    var submitBtn = form.querySelector('button[type="submit"]');
+
+    function setStatus(message, type) {
+      statusBox.textContent = message;
+      statusBox.className = 'form-status is-visible' + (type ? ' is-' + type : '');
+      statusBox.setAttribute('role', type === 'error' ? 'alert' : 'status');
+    }
+
+    function validEmail(value) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value); }
+    function validPhone(value) { return value.replace(/\D/g, '').length >= 10; }
+
+    function queueLocally(entry) {
+      try {
+        var existing = JSON.parse(localStorage.getItem('langfordWaitlist') || '[]');
+        existing.push(entry);
+        localStorage.setItem('langfordWaitlist', JSON.stringify(existing));
+      } catch (err) { /* localStorage unavailable — ignore */ }
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var name = form.elements.name;
+      var email = form.elements.email;
+      var phone = form.elements.phone;
+      var moveInDate = form.elements.moveInDate;
+      var website = form.elements.website; // honeypot
+
+      var valid = true;
+      if (!name.value.trim() || name.value.trim().length < 2) valid = false;
+      if (!validEmail(email.value.trim())) valid = false;
+      if (!validPhone(phone.value.trim())) valid = false;
+      if (!moveInDate.value) valid = false;
+
+      if (!valid) {
+        setStatus('Please fill in every field with a valid value and try again.', 'error');
+        return;
+      }
+      if (website && website.value) {
+        // Honeypot tripped — silently pretend success, do nothing further.
+        form.reset();
+        setStatus('You\u2019re on the list. Look out for an email from our leasing team.', 'success');
+        return;
+      }
+
+      var entry = {
+        name: name.value.trim(),
+        email: email.value.trim(),
+        phone: phone.value.trim(),
+        moveInDate: moveInDate.value,
+        submittedAt: new Date().toISOString()
+      };
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting\u2026';
+
+      queueLocally(entry);
+
+      if (!SHEET_ENDPOINT) {
+        // No spreadsheet endpoint configured yet — entry is safely queued locally.
+        form.reset();
+        setStatus('You\u2019re on the list. (Spreadsheet connection not yet configured \u2014 see code comments.)', 'success');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Join the VIP Waitlist';
+        return;
+      }
+
+      fetch(SHEET_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors', // Apps Script doesn't return CORS headers; response is opaque
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(entry)
+      })
+        .then(function () {
+          form.reset();
+          setStatus('You\u2019re on the list. Look out for an email from our leasing team.', 'success');
+        })
+        .catch(function () {
+          setStatus('We couldn\u2019t reach our server, but your details are saved locally \u2014 please also email leasing@thelangford.example.', 'error');
+        })
+        .finally(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Join the VIP Waitlist';
+        });
+    });
+  }
+})();
+</script>
+</body>
+</html>
