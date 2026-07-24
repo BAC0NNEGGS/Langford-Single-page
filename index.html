@@ -493,7 +493,8 @@ main > section:not(.hero):not(#waitlist),
 
         <form id="web3forms-waitlist" action="https://api.web3forms.com/submit" method="POST" novalidate style="margin-top:26px;">
           <input type="hidden" name="subject" value="New Langford VIP Waitlist Signup">
-          <input type="hidden" name="from_name" value="The Langford Website">
+          <input type="hidden" name="from_name" value="Langford">
+          <input type="hidden" name="form_name" value="Langford">
           <!-- Honeypot: hidden from real users, bots often fill it -->
           <div class="visually-hidden" aria-hidden="true">
             <label for="website">Leave this field blank</label>
@@ -852,6 +853,7 @@ main > section:not(.hero):not(#waitlist),
       moveInDate: moveInDate.value,
       subject: form.elements.subject.value,
       from_name: form.elements.from_name.value,
+      form_name: form.elements.form_name.value,
       botcheck: Boolean(botcheck && botcheck.checked),
       submittedAt: new Date().toISOString()
     };

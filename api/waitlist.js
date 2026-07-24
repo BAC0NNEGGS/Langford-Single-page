@@ -39,7 +39,8 @@ export default async function handler(request, response) {
       body: JSON.stringify({
         access_key: accessKey,
         subject: "New Langford VIP Waitlist Signup",
-        from_name: "The Langford Website",
+        from_name: "Langford",
+        form_name: "Langford",
         name,
         email,
         phone,
