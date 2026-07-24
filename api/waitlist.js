@@ -1,3 +1,5 @@
+import "dotenv/config";
+
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 
 export default async function handler(request, response) {
@@ -7,7 +9,7 @@ export default async function handler(request, response) {
   }
 
   const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
-  if (!accessKey) {
+  if (!accessKey || accessKey === "replace_with_your_web3forms_access_key") {
     return response.status(500).json({
       success: false,
       message: "WEB3FORMS_ACCESS_KEY is not configured"
