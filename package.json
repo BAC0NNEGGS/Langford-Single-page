@@ -4,9 +4,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vinext dev",
-    "build": "vinext build && node scripts/copy-hosting.mjs",
-    "preview": "vinext start"
+    "dev": "vite",
+    "build": "node scripts/build-static.mjs",
+    "preview": "vite preview"
   },
   "dependencies": {
     "react": "^19.2.6",

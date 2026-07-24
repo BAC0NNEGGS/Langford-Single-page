@@ -193,6 +193,14 @@ p { color: var(--ink-soft); }
   content: ''; position: absolute; inset: 0;
   background: linear-gradient(180deg, rgba(10,42,61,0.45) 0%, rgba(10,42,61,0.35) 40%, rgba(10,29,42,0.92) 100%);
 }
+.hero-corner-logo {
+  position: absolute;
+  top: clamp(22px, 4vw, 48px);
+  left: clamp(22px, 4vw, 64px);
+  z-index: 2;
+  width: clamp(105px, 10vw, 150px);
+}
+.hero-corner-logo img { width: 100%; height: auto; }
 .hero-inner { width: 100%; padding-block: 130px 70px; }
 .hero-badge { display: inline-flex; align-items: center; gap: 14px; margin-bottom: 26px; }
 .hero-badge img { height: 50px; }
@@ -360,29 +368,19 @@ main > section:not(.hero):not(#waitlist),
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-header" id="site-header">
-  <div class="container header-inner">
-    <a href="#main" class="brand">
-      <img src="assets/logo.png" alt="The Langford logo" width="44" height="44">
-      <span class="brand-text"><span class="brand-the">The</span><span class="brand-name">Langford</span></span>
-    </a>
-    <nav class="main-nav" aria-label="Primary">
-      <a href="#waitlist" class="nav-cta">Join VIP Waitlist</a>
-    </nav>
-  </div>
-</header>
-
 <main id="main">
 
   <!-- Hero -->
   <section class="hero">
     <div class="hero-media">
-      <img src="assets/hero.jpg" alt="Rendering of The Langford apartment tower exterior" fetchpriority="high">
+      <img src="assets/hero-clean.jpg" alt="Rendering of The Langford apartment tower exterior" fetchpriority="high">
+    </div>
+    <div class="hero-corner-logo">
+      <img src="assets/logo.png" alt="The Langford Newport News">
     </div>
     <div class="container hero-inner">
-      <div class="hero-badge"><img src="assets/logo.png" alt=""></div>
       <h1>Modern Coastal Living, Right on the James River</h1>
-      <p class="lede">A new waterfront apartment tower coming to Newport News, VA — steps from the water, minutes from the shipyard. Be first to know when leasing opens.</p>
+      <p class="lede">A new waterfront apartment tower coming to Newport News, VA steps from the water, minutes from the shipyard. Be first to know when leasing opens.</p>
       <div class="hero-actions">
         <a href="#waitlist" class="btn btn-primary">Join the VIP Waitlist</a>
       </div>
