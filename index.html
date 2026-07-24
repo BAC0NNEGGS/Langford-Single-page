@@ -492,7 +492,6 @@ main > section:not(.hero):not(#waitlist),
         <p style="margin-top:8px;">Leave your details below — no spam, ever.</p>
 
         <form id="web3forms-waitlist" action="https://api.web3forms.com/submit" method="POST" novalidate style="margin-top:26px;">
-          <input type="hidden" name="access_key" value="__WEB3FORMS_ACCESS_KEY__">
           <input type="hidden" name="subject" value="New Langford VIP Waitlist Signup">
           <input type="hidden" name="from_name" value="The Langford Website">
           <!-- Honeypot: hidden from real users, bots often fill it -->
@@ -825,7 +824,6 @@ main > section:not(.hero):not(#waitlist),
     var phone = form.elements.phone;
     var moveInDate = form.elements.moveInDate;
     var botcheck = form.elements.botcheck;
-    var accessKey = form.elements.access_key.value;
 
     if (
       !name.value.trim() ||
@@ -844,20 +842,24 @@ main > section:not(.hero):not(#waitlist),
       return;
     }
 
-    if (!accessKey || accessKey === '__WEB3FORMS_ACCESS_KEY__') {
-      setStatus('The waitlist form needs a Web3Forms access key before it can accept submissions.', 'error');
-      return;
-    }
-
     submitBtn.disabled = true;
     submitBtn.textContent = 'Submitting\u2026';
 
-    var formData = new FormData(form);
-    formData.append('submittedAt', new Date().toISOString());
+    var payload = {
+      name: name.value.trim(),
+      email: email.value.trim(),
+      phone: phone.value.trim(),
+      moveInDate: moveInDate.value,
+      subject: form.elements.subject.value,
+      from_name: form.elements.from_name.value,
+      botcheck: Boolean(botcheck && botcheck.checked),
+      submittedAt: new Date().toISOString()
+    };
 
-    fetch('https://api.web3forms.com/submit', {
+    fetch('/api/waitlist', {
       method: 'POST',
-      body: formData
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
     })
       .then(function (response) { return response.json(); })
       .then(function (result) {
