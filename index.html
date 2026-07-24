@@ -861,14 +861,34 @@ main > section:not(.hero):not(#waitlist),
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     })
-      .then(function (response) { return response.json(); })
-      .then(function (result) {
-        if (!result.success) throw new Error(result.message || 'Submission failed');
+      .then(function (response) {
+        return response.text().then(function (text) {
+          var result;
+          try {
+            result = JSON.parse(text);
+          } catch (error) {
+            result = {};
+          }
+          if (!response.ok || !result.success) {
+            throw new Error(
+              result.message ||
+              'The submission endpoint returned status ' + response.status + '.'
+            );
+          }
+          return result;
+        });
+      })
+      .then(function () {
         form.reset();
         setStatus('You\u2019re on the list. Look out for an email from our leasing team.', 'success');
       })
-      .catch(function () {
-        setStatus('We couldn\u2019t submit your details. Please try again in a moment.', 'error');
+      .catch(function (error) {
+        setStatus(
+          error && error.message
+            ? error.message
+            : 'We couldn\u2019t submit your details. Please try again in a moment.',
+          'error'
+        );
       })
       .finally(function () {
         submitBtn.disabled = false;
