@@ -491,11 +491,14 @@ main > section:not(.hero):not(#waitlist),
         <h3>Get VIP Access</h3>
         <p style="margin-top:8px;">Leave your details below — no spam, ever.</p>
 
-        <form id="waitlist-form" novalidate style="margin-top:26px;">
+        <form id="web3forms-waitlist" action="https://api.web3forms.com/submit" method="POST" novalidate style="margin-top:26px;">
+          <input type="hidden" name="access_key" value="__WEB3FORMS_ACCESS_KEY__">
+          <input type="hidden" name="subject" value="New Langford VIP Waitlist Signup">
+          <input type="hidden" name="from_name" value="The Langford Website">
           <!-- Honeypot: hidden from real users, bots often fill it -->
           <div class="visually-hidden" aria-hidden="true">
             <label for="website">Leave this field blank</label>
-            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            <input type="checkbox" id="website" name="botcheck" tabindex="-1" autocomplete="off">
           </div>
 
           <div class="form-field">
@@ -788,6 +791,88 @@ main > section:not(.hero):not(#waitlist),
         });
     });
   }
+})();
+</script>
+<script>
+(function () {
+  'use strict';
+
+  var form = document.getElementById('web3forms-waitlist');
+  if (!form) return;
+
+  var statusBox = document.getElementById('form-status');
+  var submitBtn = form.querySelector('button[type="submit"]');
+
+  function setStatus(message, type) {
+    statusBox.textContent = message;
+    statusBox.className = 'form-status is-visible' + (type ? ' is-' + type : '');
+    statusBox.setAttribute('role', type === 'error' ? 'alert' : 'status');
+  }
+
+  function validEmail(value) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  }
+
+  function validPhone(value) {
+    return value.replace(/\D/g, '').length >= 10;
+  }
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    var name = form.elements.name;
+    var email = form.elements.email;
+    var phone = form.elements.phone;
+    var moveInDate = form.elements.moveInDate;
+    var botcheck = form.elements.botcheck;
+    var accessKey = form.elements.access_key.value;
+
+    if (
+      !name.value.trim() ||
+      name.value.trim().length < 2 ||
+      !validEmail(email.value.trim()) ||
+      !validPhone(phone.value.trim()) ||
+      !moveInDate.value
+    ) {
+      setStatus('Please fill in every field with a valid value and try again.', 'error');
+      return;
+    }
+
+    if (botcheck && botcheck.checked) {
+      form.reset();
+      setStatus('You\u2019re on the list. Look out for an email from our leasing team.', 'success');
+      return;
+    }
+
+    if (!accessKey || accessKey === '__WEB3FORMS_ACCESS_KEY__') {
+      setStatus('The waitlist form needs a Web3Forms access key before it can accept submissions.', 'error');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting\u2026';
+
+    var formData = new FormData(form);
+    formData.append('submittedAt', new Date().toISOString());
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
+    })
+      .then(function (response) { return response.json(); })
+      .then(function (result) {
+        if (!result.success) throw new Error(result.message || 'Submission failed');
+        form.reset();
+        setStatus('You\u2019re on the list. Look out for an email from our leasing team.', 'success');
+      })
+      .catch(function () {
+        setStatus('We couldn\u2019t submit your details. Please try again in a moment.', 'error');
+      })
+      .finally(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Join the VIP Waitlist';
+      });
+  });
 })();
 </script>
 </body>
