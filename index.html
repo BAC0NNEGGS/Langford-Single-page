@@ -386,7 +386,7 @@ main > section:not(.hero):not(#waitlist),
       </div>
       <div class="hero-meta">
         <div><span class="num">2800</span><span class="label">West Avenue</span></div>
-        <div><span class="num">Studio&ndash;3BR</span><span class="label">Residence Types</span></div>
+        <div><span class="num">Studio&ndash;2BR</span><span class="label">Residence Types</span></div>
         <div><span class="num">Waterfront</span><span class="label">James River Setting</span></div>
       </div>
     </div>
@@ -492,6 +492,7 @@ main > section:not(.hero):not(#waitlist),
         <p style="margin-top:8px;">Leave your details below — no spam, ever.</p>
 
         <form id="web3forms-waitlist" action="https://api.web3forms.com/submit" method="POST" novalidate style="margin-top:26px;">
+          <input type="hidden" name="access_key" value="d31e4774-e72c-44d0-8373-1eedba1a4413">
           <input type="hidden" name="subject" value="New Langford VIP Waitlist Signup">
           <input type="hidden" name="from_name" value="Langford">
           <input type="hidden" name="form_name" value="Langford">
@@ -858,10 +859,12 @@ main > section:not(.hero):not(#waitlist),
       submittedAt: new Date().toISOString()
     };
 
-    fetch('/api/waitlist', {
+    var formData = new FormData(form);
+    formData.append('submittedAt', payload.submittedAt);
+
+    fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      body: formData
     })
       .then(function (response) {
         return response.text().then(function (text) {
